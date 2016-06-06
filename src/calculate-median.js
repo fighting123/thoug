@@ -5,9 +5,9 @@ function calculate_median(arr) {
   });
   var len = newArr.length;
   if(len % 2 == 1){
-  	console.log(newArr[(len-1)/2]);
+  	return newArr[(len-1)/2];
   }else{
-  	console.log((newArr[len/2] + newArr[len/2-1])/2);
+  	return (newArr[len/2] + newArr[len/2-1])/2;
   }
 };
 module.exports = calculate_median;
