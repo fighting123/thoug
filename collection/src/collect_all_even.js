@@ -2,7 +2,7 @@
 
 function collect_all_even(collection) {
 	var newArr = collection.filter(function(value,item,arr){
-  	return value % 2 == 0;
+  	return arr[item] % 2 == 0;
   });
 	return newArr;
 	
