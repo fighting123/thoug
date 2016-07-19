@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>superMarket</title>
+	<script type="text/javascript">
+		
+		function computeSubCount(cartItems){
+			let result = [];
+
+			for(let i=0;i<cartItems.length;i++){
+				let existItem = result.find(function(item){
+					return item.bardcode === cartItems[i].bardcode;
+				});
+				if(existItem){
+					existItem.count++;
+				}else{
+					result.push(Object.assign({},cartItems[i],{
+						count : 1
+					}));
+				}
+			}
+			return result;
+		};
+
+		
+
+		function subTotal(result){
+			let subResult = [];
+			for(let i=0;i<result.length;i++){
+				subResult.push(Object.assign({},result[i],{
+						ownPrice : result[i].count * result[i].price
+					}));
+			}
+			return subResult;
+		};
+
+		function total(subResult){
+			let sum = 0;
+			for(let i=0;i<subResult.length;i++){
+				sum += subResult[i].ownPrice; 
+			};
+			subResult.totalPrice = sum;
+			return subResult;
+		}
+
+
+
+		let cartItems = [
+		{
+			bardcode : "Item0001",
+			name : "可口可乐",
+			unit : "瓶",
+			price : 3.00
+		},
+		{
+			bardcode : "Item0001",
+			name : "可口可乐",
+			unit : "瓶",
+			price : 3.00
+		},
+		{
+			bardcode : "Item0003",
+			name : "面包",
+			unit : "袋",
+			price : 5.00
+		},
+		{
+			bardcode : "Item0002",
+			name : "薯片",
+			unit : "桶",
+			price : 7.00
+		},
+		];
+		console.log(total(subTotal(computeSubCount(cartItems))));
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
